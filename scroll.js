@@ -195,12 +195,3 @@ document.addEventListener('DOMContentLoaded', () => {
         form.reset();
     });
 });
-
-const textarea = document.getElementById('comment-input');
-textarea.addEventListener('keydown', function (e) {
-    if (e.key === 'Enter' && !e.shiftKey) {
-        e.preventDefault();                    // Ngăn việc xuống dòng
-        document.getElementById('comment-form')
-            .requestSubmit();              // Gửi form
-    }
-});
