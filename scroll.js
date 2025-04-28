@@ -127,31 +127,35 @@ document.addEventListener('DOMContentLoaded', () => {
     // Khởi chạy 1 lần
     onScroll();
 })();
-const STORAGE_KEY = 'userComments';
+// Không dùng STORAGE_KEY nữa
 
 // Generate random nickname
-const adjectives = ['Fierce', 'Neon', 'Savage', 'Lunar', 'Cyber', 'Quantum', 'Vivid', 'Rogue'];
-const nouns = ['Phoenix', 'Raptor', 'Pulsar', 'Specter', 'Vortex', 'Cipher', 'Glitch', 'Nova'];
+const adjectives = ['Tiny', 'Fluffy', 'Chubby', 'Happy', 'Sunny', 'Bouncy', 'Cuddly', 'Lovely'];
+const nouns = ['Bunny', 'Kitten', 'Puppy', 'Duckling', 'Panda', 'Lamb', 'Hedgehog', 'Chick'];
+
 function getRandomNickname() {
     return adjectives[Math.floor(Math.random() * adjectives.length)] +
         nouns[Math.floor(Math.random() * nouns.length)] +
         Math.floor(Math.random() * 1000);
 }
 
-// Load existing comments from storage
+// Load existing comments from Firebase
 function loadComments() {
-    const data = localStorage.getItem(STORAGE_KEY);
-    if (!data) return;
-    const comments = JSON.parse(data);
-    comments.forEach(c => renderComment(c.nickname, c.text));
+    const commentList = document.getElementById('comment-list');
+    database.ref('comments').on('child_added', snapshot => {
+        const comment = snapshot.val();
+        renderComment(comment.nickname, comment.text);
+    });
 }
 
-// Save comment to storage
+// Save comment to Firebase
 function saveComment(nickname, text) {
-    const data = localStorage.getItem(STORAGE_KEY) || '[]';
-    const comments = JSON.parse(data);
-    comments.unshift({ nickname, text });
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(comments));
+    const newCommentRef = database.ref('comments').push();
+    newCommentRef.set({
+        nickname: nickname,
+        text: text,
+        timestamp: Date.now()
+    });
 }
 
 // Render a single comment block
@@ -187,11 +191,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const text = textarea.value.trim();
         if (!text) return;
         const nickname = getRandomNickname();
-        renderComment(nickname, text);
-        saveComment(nickname, text);
+        saveComment(nickname, text); // Lưu lên Firebase
         form.reset();
     });
 });
+
 const textarea = document.getElementById('comment-input');
 textarea.addEventListener('keydown', function (e) {
     if (e.key === 'Enter' && !e.shiftKey) {
