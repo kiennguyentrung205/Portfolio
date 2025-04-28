@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="icon" href="logo.ico" type="image/png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styleindex.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="overlay absolute inset-0 bg-black/60"></div>
+        <div class="content relative z-10 flex flex-col items-center justify-center text-center px-4">
+            <img src="avatar2.jpg" alt="My Avatar" class="avatar w-36 h-36 rounded-full border-4 border-[#61dafb]">
+            <h1 class="mt-6 text-4xl font-extrabold text-white">Kien Nguyen Trung</h1>
+            <p class="mt-2 text-lg text-gray-200">Capturing moments &amp; crafting code.</p>
+            <div class="music-player">
+                <div class="cover" style="background-image: url('blue.jpg');"></div>
+                <div class="info">
+                    <div class="title">yung kai • blue</div>
+                    <div class="controls">
+                        <button id="prev-btn">⏮️</button>
+                        <button id="play-btn">▶️</button>
+                        <button id="next-btn">⏭️</button>
+                    </div>
+                </div>
+                <audio id="bg-music" src="blue.mp3" autoplay loop muted></audio>
+            </div>
+        </div>
+    </header>
+    <!-- About Section -->
+    <section id="about"
+        class="flex flex-col md:flex-row items-center justify-center py-20 px-4 bg-[#0a0a0a] text-white">
+        <div class="flex-1 text-center md:text-left mb-8 md:mb-0">
+            <img src="avatar3.jpg" alt="Nguyễn Trung Kiên" class="mx-auto max-w-xs w-full rounded-2xl shadow-xl">
+        </div>
+        <div class="flex-1 md:pl-12">
+            <h2 class="text-4xl font-bold mb-6">Hello there!</h2>
+            <p class="text-lg leading-relaxed">
+                I’m <strong>Nguyen Trung Kien</strong>, born in 2005, from Vietnam – Long Xuyen, An Giang. I’m currently
+                studying Software Engineering at FPT University.<br><br>
+                I’m passionate about technology and always eager to explore new trends, embracing challenges that bring
+                valuable experiences.<br><br>
+                This is my portfolio website—where I showcase my projects, skills, and interests. Feel free to browse
+                around and follow along on my journey!
+            </p>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Experience Layout -->
+        <section id="experience">
+            <h2 class="text-3xl font-extrabold text-center mb-12 text-white">My Experiences At University</h2>
+            <div class="experience-grid">
+                <div class="experience-item"><img src="activity1.jpg" alt="Experience 1"></div>
+                <div class="experience-item"><img src="activity2.jpg" alt="Experience 2"></div>
+                <div class="experience-item"><img src="activity3.jpg" alt="Experience 3"></div>
+                <div class="experience-item"><img src="activity4.jpg" alt="Experience 4"></div>
+                <div class="experience-item"><img src="activity5.jpg" alt="Experience 5"></div>
+                <div class="experience-item"><img src="activity6.jpg" alt="Experience 6"></div>
+            </div>
+        </section>
+        <!-- Projects Section -->
+        <section id="projects">
+            <div class="container">
+                <h2 class="text-3xl font-extrabold text-center mb-12 text-white">My Projects</h2>
+                <div class="project-container">
+                    <div class="project-info">
+                        <h3 class="text-2xl font-semibold">Tetris Game (Java Swing)</h3>
+                        <p>A classic Tetris implementation built with Java Swing. Features include:</p>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Dynamic levels &amp; increasing speed</li>
+                            <li>Scoring and ranking board</li>
+                            <li>Customizable controls and themes</li>
+                        </ul>
+                    </div>
+                    <div class="project-images">
+                        <img src="pjgame1.jpg" class="parallax-3d" alt="Screen 1">
+                        <img src="pjgame2.jpg" class="parallax-3d featured" alt="Screen 2">
+                        <img src="pjgame3.jpg" class="parallax-3d" alt="Screen 3">
+                        <img src="pjgame4.jpg" class="parallax-3d" alt="Screen 4">
+                        <img src="pjgame5.jpg" class="parallax-3d featured" alt="Screen 5">
+                    </div>
+                </div>
+                <div class="more-projects text-center mt-12">
+                    <a href="https://github.com/kiennguyentrung205" target="_blank"
+                        class="inline-flex items-center space-x-2 bg-white text-black px-5 py-2 rounded-full shadow-md hover:scale-105 transition">
+                        <img src="github.png" alt="GitHub Logo" class="w-6 h-6">
+                        <span>View more projects on GitHub</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hobbies -->
+        <section id="hobbies" class="hobbies-section">
+            <h2 class="text-3xl font-extrabold text-center mb-12 text-white">Enjoy</h2>
+            <div class="hobbies-container">
+                <!-- Left: Your avatar or photo -->
+                <div class="hobbies-image">
+                    <img src="hobbie.jpg" alt="My Photo">
+                </div>
+                <!-- Right: List of hobbies -->
+                <ul class="hobbies-list">
+                    <li class="hobby-item">Music</li>
+                    <li class="hobby-item">Traveling</li>
+                    <li class="hobby-item">Coding</li>
+                    <li class="hobby-item">Language learning</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="py-16 px-6 text-white max-w-5xl mx-auto">
+            <h2 class="text-3xl font-extrabold mb-12 text-center">Get In Touch</h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <!-- Personal Side -->
+                <div class="w-full md:w-1/2">
+                    <h3 class="text-2xl font-semibold mb-6 text-center md:text-left">Personal</h3>
+                    <div class="flex justify-center md:justify-start space-x-8">
+                        <a href="https://www.facebook.com/trung.kien.341969/" target="_blank" class="link-item">
+                            <img src="facebook.png" alt="Facebook" class="w-12 h-12 object-contain" />
+                        </a>
+                        <a href="https://www.instagram.com/konkin.unme/" target="_blank" class="link-item">
+                            <img src="ig.png" alt="Instagram" class="w-12 h-12 object-contain" />
+                        </a>
+                        <a href="https://www.threads.com/@konkin.unme?hl=vi" target="_blank" class="link-item">
+                            <img src="threads.png" alt="Threads" class="w-12 h-12 object-contain" />
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Divider Line -->
+                <div class="hidden md:block mx-8 h-40 border-l border-gray-600"></div>
+
+                <!-- Professional Side -->
+                <div class="w-full md:w-1/2 mt-10 md:mt-0">
+                    <h3 class="text-2xl font-semibold mb-6 text-center">For Works</h3>
+                    <div class="flex justify-center space-x-8">
+                        <a href="https://www.linkedin.com/in/kien-nguyen-333578319/" target="_blank" class="link-item">
+                            <img src="linkedin.png" alt="LinkedIn" class="w-12 h-12 object-contain" />
+                        </a>
+                        <a href="mailto:nguyenzibralic@gmail.com" class="link-item">
+                            <img src="gmail.png" alt="Email" class="w-12 h-12 object-contain" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comments -->
+        <section id="comments" class="py-16 px-6 max-w-3xl mx-auto bg-transparent">
+            <h2 class="text-3xl font-extrabold mb-8 text-center text-white">Leave a Comment</h2>
+            <form id="comment-form" class="relative">
+                <!-- Floating textarea -->
+                <textarea id="comment-input" name="comment" rows="4" placeholder="Your Comment…" required
+                    class="w-full p-6 bg-[#222] text-gray-100 placeholder-gray-500 rounded-2xl focus:outline-none transform transition-transform duration-500 hover:-translate-y-1 hover:scale-105 shadow-lg"></textarea>
+                <!-- Floating button -->
+                <button type="submit"
+                    class="absolute -bottom-4 right-6 px-6 py-3 bg-blue-500 text-white font-bold rounded-full transform transition-transform duration-300 hover:-translate-y-2 hover:scale-110 shadow-2xl">
+                    Submit
+                </button>
+            </form>
+
+            <div id="comment-list" class="mt-12 space-y-10">
+                <!-- New comments will appear here -->
+            </div>
+        </section>
+
+    </div>
+    <!-- Lightbox Overlay -->
+    <div id="lightboxOverlay">
+        <button id="lightboxClose">×</button>
+        <button class="lightbox-btn" id="lightboxPrev">⟨</button>
+        <img src="" alt="Preview">
+        <button class="lightbox-btn" id="lightboxNext">⟩</button>
+    </div>
+    <!-- Footer -->
+    <footer>
+        &copy; 2025 Kien Nguyen Trung. All rights reserved.
+    </footer>
+
+    <!-- Scroll Reveal Script -->
+    <script src="scroll.js"></script>
+    <script>
+        const audio = document.getElementById('bg-music');
+        const playBtn = document.getElementById('play-btn');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+
+        playBtn.addEventListener('click', () => {
+            audio.muted = false;
+            if (audio.paused) {
+                audio.play();
+                playBtn.innerHTML = "⏸️";
+            } else {
+                audio.pause();
+                playBtn.innerHTML = "▶️";
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            audio.currentTime -= 10;
+        });
+
+        nextBtn.addEventListener('click', () => {
+            audio.currentTime += 10;
+        });
+    </script>
+</body>
+
+</html>
