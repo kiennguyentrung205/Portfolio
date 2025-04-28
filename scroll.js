@@ -180,18 +180,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Submit on enter (no shift)
     textarea.addEventListener('keydown', e => {
-        if (e.key === 'Enter' && !e.shiftKey) {
-            e.preventDefault();
-            form.requestSubmit();
-        }
-    });
+    if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();  // Ngừng hành động mặc định
+        form.submit();  // Sử dụng form.submit() thay vì form.requestSubmit()
+    }
+});
 
-    form.addEventListener('submit', e => {
-        e.preventDefault();
-        const text = textarea.value.trim();
-        if (!text) return;
-        const nickname = getRandomNickname();
-        saveComment(nickname, text); // Lưu lên Firebase
-        form.reset();
-    });
+   form.addEventListener('submit', e => {
+    e.preventDefault();
+    const text = textarea.value.trim();
+    if (!text) return;
+    const nickname = getRandomNickname();
+    console.log('Saving comment:', nickname, text);  // Log thông tin để kiểm tra
+    saveComment(nickname, text); // Lưu lên Firebase
+    form.reset();
+});
 });
