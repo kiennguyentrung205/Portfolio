@@ -214,29 +214,102 @@
             audio.currentTime += 10;
         });
     </script>
-    <script type="module">
-  // Import the functions you need from the SDKs you need
+   <script type="module">
+  // Import Firebase core
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Import Realtime Database functions
+  import { getDatabase, ref, push, onChildAdded, set } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-database.js";
 
   // Your web app's Firebase configuration
   const firebaseConfig = {
     apiKey: "AIzaSyC7UA5DWiC7n4QFEye01iT9LlgKY8DifuM",
     authDomain: "portfolio-2c494.firebaseapp.com",
     projectId: "portfolio-2c494",
-    storageBucket: "portfolio-2c494.appspot.com", // Đã sửa lại đúng
+    storageBucket: "portfolio-2c494.appspot.com",
     messagingSenderId: "348822527548",
     appId: "1:348822527548:web:1a5c645444e99861a16d39",
-    measurementId: "G-8PV3QY3S4P"
+    measurementId: "G-8PV3QY3S4P",
+    databaseURL: "https://portfolio-2c494-default-rtdb.firebaseio.com/"  // Bạn thiếu dòng này!
   };
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
-</script>
+  
+  // Initialize Realtime Database
+  const database = getDatabase(app);
 
+  // Generate random nickname
+  const adjectives = ['Tiny', 'Fluffy', 'Chubby', 'Happy', 'Sunny', 'Bouncy', 'Cuddly', 'Lovely'];
+  const nouns = ['Bunny', 'Kitten', 'Puppy', 'Duckling', 'Panda', 'Lamb', 'Hedgehog', 'Chick'];
+
+  function getRandomNickname() {
+      return adjectives[Math.floor(Math.random() * adjectives.length)] +
+          nouns[Math.floor(Math.random() * nouns.length)] +
+          Math.floor(Math.random() * 1000);
+  }
+
+  // Load existing comments from Firebase
+  function loadComments() {
+      const commentList = document.getElementById('comment-list');
+      const commentsRef = ref(database, 'comments');
+      onChildAdded(commentsRef, (snapshot) => {
+          const comment = snapshot.val();
+          renderComment(comment.nickname, comment.text);
+      });
+  }
+
+  // Save comment to Firebase
+  function saveComment(nickname, text) {
+      const commentsRef = ref(database, 'comments');
+      const newCommentRef = push(commentsRef);
+      set(newCommentRef, {
+          nickname: nickname,
+          text: text,
+          timestamp: Date.now()
+      });
+  }
+
+  // Render a single comment block
+  function renderComment(nickname, text) {
+      const card = document.createElement('div');
+      card.className = 'p-6 bg-[#222] rounded-2xl shadow-inner transform transition-transform duration-500 hover:-translate-y-2 hover:scale-105';
+      card.innerHTML = `
+      <div class="flex items-center mb-4">
+        <div class="w-12 h-12 bg-blue-500 text-white font-bold flex items-center justify-center rounded-full shadow-lg">${nickname.charAt(0)}</div>
+        <span class="ml-4 text-lg font-semibold text-white">${nickname}</span>
+      </div>
+      <p class="text-gray-300">${text}</p>
+    `;
+      document.getElementById('comment-list').prepend(card);
+  }
+
+  // Initialize form
+  document.addEventListener('DOMContentLoaded', () => {
+      loadComments();
+      const form = document.getElementById('comment-form');
+      const textarea = document.getElementById('comment-input');
+      const submitButton = form.querySelector('button[type="submit"]');
+
+      textarea.addEventListener('keydown', e => {
+          if (e.key === 'Enter' && !e.shiftKey) {
+              e.preventDefault();
+              submitButton.click();
+          }
+      });
+
+      form.addEventListener('submit', e => {
+          e.preventDefault();
+          const text = textarea.value.trim();
+          if (!text) return;
+          const nickname = getRandomNickname();
+          saveComment(nickname, text);
+          form.reset();
+      });
+  });
+</script>
 </body>
 
 </html>
