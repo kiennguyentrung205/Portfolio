@@ -20,7 +20,7 @@ export default function Hobbies() {
           <div className="relative group">
             <div className="absolute -inset-2 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-500"></div>
             <img 
-              src="/hobbie.jpg" 
+              src={`${import.meta.env.BASE_URL}hobbie.jpg`} 
               alt="My Photo" 
               className="relative rounded-2xl w-full max-w-sm object-cover shadow-2xl transform transition-transform duration-500 group-hover:scale-[1.02]"
             />

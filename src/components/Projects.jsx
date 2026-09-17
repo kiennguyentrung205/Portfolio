@@ -51,7 +51,7 @@ export default function Projects() {
               >
                 <div className="absolute inset-0 bg-cyan-500/0 group-hover:bg-cyan-500/20 transition-colors duration-500 z-10 pointer-events-none"></div>
                 <img 
-                  src={`/pjgame${num}.jpg`} 
+                  src={`${import.meta.env.BASE_URL}pjgame${num}.jpg`} 
                   alt={`Tetris Screen ${num}`} 
                   className="w-full h-auto object-contain rounded-2xl transform transition-transform duration-700 group-hover:scale-105"
                 />

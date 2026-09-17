@@ -25,7 +25,7 @@ export default function Hero() {
         <div className="relative group">
           <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
           <img 
-            src="/avatar.png" 
+            src={`${import.meta.env.BASE_URL}avatar.png`} 
             alt="My Avatar" 
             className="relative w-32 h-32 md:w-36 md:h-36 rounded-full border-4 border-[#0a0a0a] object-cover"
           />

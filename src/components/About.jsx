@@ -6,7 +6,7 @@ export default function About() {
           <div className="relative group">
             <div className="absolute -inset-2 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-500"></div>
             <img 
-              src="/avatar3.jpg" 
+              src={`${import.meta.env.BASE_URL}avatar3.jpg`} 
               alt="Nguyen Trung Kien" 
               className="relative mx-auto max-w-xs sm:max-w-sm w-full rounded-2xl shadow-2xl transform transition-transform duration-500 group-hover:-translate-y-2 group-hover:scale-[1.02] object-cover" 
             />

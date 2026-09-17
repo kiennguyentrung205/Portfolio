@@ -55,8 +55,8 @@ function App() {
         <div className="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-50 transform scale-75 sm:scale-100 origin-bottom-left pointer-events-none sm:pointer-events-auto">
           <div className="pointer-events-auto">
             <Mascot 
-              directions="/mascots/kien-directions.webp" 
-              reactions="/mascots/kien-reactions.webp" 
+              directions={`${import.meta.env.BASE_URL}mascots/kien-directions.webp`} 
+              reactions={`${import.meta.env.BASE_URL}mascots/kien-reactions.webp`} 
             />
           </div>
         </div>
