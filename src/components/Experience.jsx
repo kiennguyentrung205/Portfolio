@@ -1,10 +1,10 @@
 const experiences = [
-  { img: '/activity1.jpg', alt: 'Experience 1' },
-  { img: '/activity2.jpg', alt: 'Experience 2' },
-  { img: '/activity3.jpg', alt: 'Experience 3' },
-  { img: '/activity4.jpg', alt: 'Experience 4' },
-  { img: '/activity5.jpg', alt: 'Experience 5' },
-  { img: '/activity6.jpg', alt: 'Experience 6' }
+  { img: `${import.meta.env.BASE_URL}activity1.jpg`, alt: 'Experience 1' },
+  { img: `${import.meta.env.BASE_URL}activity2.jpg`, alt: 'Experience 2' },
+  { img: `${import.meta.env.BASE_URL}activity3.jpg`, alt: 'Experience 3' },
+  { img: `${import.meta.env.BASE_URL}activity4.jpg`, alt: 'Experience 4' },
+  { img: `${import.meta.env.BASE_URL}activity5.jpg`, alt: 'Experience 5' },
+  { img: `${import.meta.env.BASE_URL}activity6.jpg`, alt: 'Experience 6' }
 ]
 
 export default function Experience() {
