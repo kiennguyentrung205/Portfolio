@@ -23,13 +23,13 @@ export default function MusicPlayer() {
         
         {/* Vinyl Cover */}
         <div className={`w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 rounded-full overflow-hidden border-2 border-cyan-500/50 ${isPlaying ? 'animate-[spin_4s_linear_infinite]' : ''}`}>
-          <img src={`${import.meta.env.BASE_URL}blue.jpg`} alt="Cover" className="w-full h-full object-cover" />
+          <img src={`${import.meta.env.BASE_URL}ghost.webp`} alt="Cover" className="w-full h-full object-cover" />
         </div>
 
         {/* Info */}
         <div className="flex flex-col min-w-[80px] sm:min-w-[120px]">
-          <span className="text-xs sm:text-sm font-semibold text-white tracking-wide truncate">yung kai</span>
-          <span className="text-[10px] sm:text-xs text-cyan-400 truncate">blue</span>
+          <span className="text-xs sm:text-sm font-semibold text-white tracking-wide truncate">Justin Bieber</span>
+          <span className="text-[10px] sm:text-xs text-cyan-400 truncate">Ghost</span>
         </div>
 
         {/* Controls */}
@@ -49,7 +49,7 @@ export default function MusicPlayer() {
         </div>
 
         {/* Hidden Audio Element */}
-        <audio ref={audioRef} src={`${import.meta.env.BASE_URL}blue.mp3`} loop />
+        <audio ref={audioRef} src={`${import.meta.env.BASE_URL}Justin Bieber - Ghost.mp3`} loop />
       </div>
     </div>
   )
