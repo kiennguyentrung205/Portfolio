@@ -20,6 +20,25 @@ function App() {
   const appRef = useRef(null)
 
   useGSAP(() => {
+    // Secret URL parameter to set owner flag (for mobile/tablets)
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('iamkien') === '1') {
+      localStorage.setItem('isOwner', 'true');
+      alert('Welcome Boss! Tracking disabled on this device.');
+      // Remove the parameter from URL to keep it clean
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+
+    // Hidden Visitor Tracker
+    const isOwner = localStorage.getItem('isOwner') === 'true';
+    const hasVisited = sessionStorage.getItem('hasVisited') === 'true';
+
+    if (!isOwner && !hasVisited) {
+      fetch('https://hits.sh/kiennguyentrung205.github.io/portfolio.svg')
+        .then(() => sessionStorage.setItem('hasVisited', 'true'))
+        .catch(() => {});
+    }
+
     // Sync ScrollTrigger with Lenis
     function update(time) {
       ScrollTrigger.update()
